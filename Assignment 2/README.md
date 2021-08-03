@@ -1,5 +1,5 @@
 # Short description of each task
-(Details are available inside each task folder)
+Details are available (where necessary) inside each task folder
 
 Implemented in Tensorflow 2.0.0
 
