@@ -55,6 +55,10 @@ for step in range(1000):
             out = layer(out)
         xent = tf.reduce_mean(tf.nn.sparse_softmax_cross_entropy_with_logits(
             logits=out, labels=lbl_batch))
+    
+    # tf documentation: "Warning: This op (tf.nn.sparse_softmax_cross_entropy_with_logits) expects unscaled logits,
+    # since it performs a softmax on logits internally for efficiency.
+    # Do not call this op with the output of softmax, as it will produce incorrect results."
 
     # weights means all trainable parameters in this network.
     weights = [var for l in layers for var in l.trainable_variables]
