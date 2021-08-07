@@ -105,7 +105,7 @@ def logging():
 
     with train_writer.as_default():
 
-        # 5 image output  from training batch
+        # 5 image output from training batch
         tf.summary.image("input", tf.reshape(img_batch, [-1, 28, 28, 1]), step=steps, max_outputs=5)
 
         tf.summary.scalar("accuracy_train", acc_train, step=steps)
@@ -122,9 +122,6 @@ def logging():
         tf.summary.histogram("gradient_2_w", grads[1], step=steps)
         tf.summary.histogram("gradient_3_w", grads[2], step=steps)
         tf.summary.histogram("gradient_4_w", grads[3], step=steps)
-
-        # just looking at the images nothing much that we are training the network with
-        tf.summary.image("input", tf.reshape(img_batch, [-1, 28, 28, 1]), step=steps)
 
     with test_writer.as_default():
 
