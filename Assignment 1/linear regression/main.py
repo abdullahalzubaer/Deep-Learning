@@ -27,6 +27,8 @@ def train(model, inputs, outputs, learning_rate):
     model.W.assign_sub(learning_rate*dw)
     model.b.assign_sub(learning_rate*db)
 
+    return current_loss
+
 
 model = Model()
 
@@ -55,10 +57,8 @@ print(f"Initial bias before training: {model.b.numpy()}")  # un-trained bias
 for epoch in epochs:
     Ws.append(model.W.numpy())
     bs.append(model.b.numpy())
-    current_loss = loss(outputs, model(inputs))
+    current_loss = train(model, inputs, outputs, learning_rate=0.1)
     c_loss.append(current_loss)
-
-    train(model, inputs, outputs, learning_rate=0.1)
 
 
 print(f"Weight after training: {model.W.numpy():.5f}")  # trained weight
