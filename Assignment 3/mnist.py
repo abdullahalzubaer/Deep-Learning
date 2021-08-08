@@ -92,6 +92,7 @@ def train_step(input_x, input_y):
 epochs = 2
 
 for epoch in range(epochs):
+    print(f"Epoch number: {epoch+1}")
     for step, (x_batch_train, y_batch_train) in enumerate(train_dataset):
         loss_val = train_step(x_batch_train, y_batch_train)
         if step % 10 == 0:
