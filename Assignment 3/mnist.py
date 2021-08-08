@@ -135,7 +135,7 @@ test_acc = test_accuracy(y_test_non_batch, prediction).numpy()
 print(f"Test Samples (full dataset) -> Total Loss: {loss_val:.3f}, Accuracy: {test_acc:.3f}")
 
 
-# # 2. In batches -> Uncomment below for calculating error in batches (in the end we are taking mean of all the batches loss)
+# # 2. In batches -> Uncomment below for calculating error in batches (in the end we are taking mean of all the batches loss and accuracy)
 # mean_loss = list()
 # mean_accuracy = list()
 #
