@@ -36,24 +36,36 @@ print(len(x_test))
 # model = tf.keras.Model(inputs=inputs, outputs=out)
 
 
-# Model 2
-# model = tf.keras.Sequential([
-#     tf.keras.layers.InputLayer(input_shape=(28, 28, 1)),
-#     tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu'),
-#     tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu'),
-#     tf.keras.layers.Flatten(),
-#     tf.keras.layers.Dense(10)
-# ])
+# Model 2 
 
+'''
+Model 2 Result:
 
-# Model 1 - Uncomment to use this model it is an MLP
+    Epoch = 2
+
+    Training accuracy: 0.963
+    Training loss    : 0.001
+
+    Test accuracy    : 0.971
+    Test loss        : 1.488
+'''
 model = tf.keras.Sequential([
     tf.keras.layers.InputLayer(input_shape=(28, 28, 1)),
+    tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu'),
+    tf.keras.layers.Conv2D(filters=32, kernel_size=(3, 3), activation='relu'),
     tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(128, activation='relu'),
-    # tf.keras.layers.Dense(64, activation='relu'),
-    tf.keras.layers.Dense(10)  # reason why no softmax previously written
+    tf.keras.layers.Dense(10)
 ])
+
+
+# Model 1 - Uncomment to use this model, it is an MLP (if using CPU maybe this is better)
+# model = tf.keras.Sequential([
+#     tf.keras.layers.InputLayer(input_shape=(28, 28, 1)),
+#     tf.keras.layers.Flatten(),
+#     tf.keras.layers.Dense(128, activation='relu'),
+#     # tf.keras.layers.Dense(64, activation='relu'),
+#     tf.keras.layers.Dense(10)  # reason why no softmax previously written
+# ])
 
 
 optimizer = keras.optimizers.Adam(learning_rate=0.001)
