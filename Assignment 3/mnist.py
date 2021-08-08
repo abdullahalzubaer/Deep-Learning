@@ -92,6 +92,7 @@ def train_step(input_x, input_y):
 epochs = 2
 
 for epoch in range(epochs):
+    print(f"Epoch number: {epoch+1}")
     for step, (x_batch_train, y_batch_train) in enumerate(train_dataset):
         loss_val = train_step(x_batch_train, y_batch_train)
         if step % 10 == 0:
@@ -135,7 +136,7 @@ test_acc = test_accuracy(y_test_non_batch, prediction).numpy()
 print(f"Test Samples (full dataset) -> Total Loss: {loss_val:.3f}, Accuracy: {test_acc:.3f}")
 
 
-# # 2. In batches -> Uncomment below for calculating error in batches (in the end we are taking mean of all the batches loss)
+# # 2. In batches -> Uncomment below for calculating error in batches (in the end we are taking mean of all the batches loss and accuracy)
 # mean_loss = list()
 # mean_accuracy = list()
 #
