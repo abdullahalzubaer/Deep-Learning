@@ -1,3 +1,5 @@
+# This block (MNISTDataset class) of code was provided to us in the assignment to work with the dataset without using tf.data module)
+
 import numpy as np
 
 
