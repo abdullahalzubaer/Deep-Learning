@@ -7,6 +7,7 @@ import datetime
 
 class MNISTDataset:
     """'Bare minimum' class to wrap MNIST numpy arrays into a dataset."""
+    # This block (MNISTDataset class) of code was provided to us in the assignment to work with the dataset without using tf.data module)
 
     def __init__(self, train_imgs, train_lbs, test_imgs, test_lbls, batch_size,
                  to01=True, shuffle=True, seed=None):
