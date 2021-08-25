@@ -11,7 +11,7 @@ Implemented in Tensorflow 2.0.
 ## Assignment 1
 ---
 
-For MNIST dataset, implemented at a very low level (custom training loop with tf.GradientTape()) using Tensorflow 2.0 without keras functionality.
+For MNIST dataset, implemented at a very low level (custom training loop with tf.GradientTape()) using Tensorflow 2.0 without keras functionality, initializing own weights and biases.
 
 
 ## Assignment 2
@@ -27,5 +27,10 @@ For MNIST dataset, implemented at a very low level (custom training loop with tf
 
 CNN built with certain keras functionality trained on MNIST, CIFAR10, CIFAR100 but using custom training loop with tf.GradientTape()
 
+## Assignment 4
+---
+
+1. CNN for classification  using tf.function decorator to speed up process for training and test phase.
+2. DenseNet implementation from scratch
 
 
