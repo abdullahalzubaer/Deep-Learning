@@ -102,7 +102,7 @@ acc_plotting(train_steps, acc_plot)
 
 
 @tf.function
-def train(test_data, test_labels):
+def test(test_data, test_labels):
     logits1_1 = tf.nn.relu((tf.matmul(test_data, W1) + b1))
     logits2_2 = tf.nn.relu((tf.matmul(logits1_1, W2) + b2))
     logits3_3 = tf.nn.relu((tf.matmul(logits2_2, W3) + b3))
@@ -112,5 +112,5 @@ def train(test_data, test_labels):
     return acc
 
 
-accuracy = train(data.test_data, data.test_labels)
+accuracy = test(data.test_data, data.test_labels)
 print(f"Accuracy on the test data: {accuracy}")
