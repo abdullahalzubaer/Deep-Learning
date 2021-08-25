@@ -1,16 +1,15 @@
+import numpy as np
 import tensorflow as tf
+from keras.preprocessing import image
 from tensorflow import keras
 from tensorflow.keras import layers
-from keras.preprocessing import image
-import numpy as np
-
 
 # Getting the data.
 
 (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
 
-x_train = x_train.reshape([-1, 32, 32, 3]).astype(np.float32)/255
-x_test = x_test.reshape([-1, 32, 32, 3]).astype(np.float32)/255
+x_train = x_train.reshape([-1, 32, 32, 3]).astype(np.float32) / 255
+x_test = x_test.reshape([-1, 32, 32, 3]).astype(np.float32) / 255
 
 y_train = y_train.astype(np.int32)
 y_test = y_test.astype(np.int32)
@@ -21,7 +20,9 @@ y_test_non_batch = y_test
 
 train_dataset = tf.data.Dataset.from_tensor_slices((x_train, y_train)).batch(128)
 # I dont want batch less than 128 for test dataset.
-test_dataset = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(128, drop_remainder=True)
+test_dataset = tf.data.Dataset.from_tensor_slices((x_test, y_test)).batch(
+    128, drop_remainder=True
+)
 
 
 optimizer = keras.optimizers.Adam(learning_rate=0.001)
@@ -29,7 +30,7 @@ loss_fn = keras.losses.SparseCategoricalCrossentropy(from_logits=True)
 test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy()
 
 # very deep and complicated model
-'''
+"""
 
 Model Result:
 
@@ -41,19 +42,21 @@ Model Result:
     Test accuracy    : 0.849
     Test loss        : 1.835
 
-'''
-model = tf.keras.Sequential([
-                            # data_augmentation,
-                            tf.keras.layers.InputLayer(input_shape=(32, 32, 3)),
-                            tf.keras.layers.Conv2D(128, 2, padding='same', activation='relu'),
-                            tf.keras.layers.Conv2D(64, 2, padding='same', activation='relu'),
-                            tf.keras.layers.Conv2D(32, 2, padding='same', activation='relu'),
-                            tf.keras.layers.Dropout(0.2),
-                            tf.keras.layers.Flatten(),
-                            tf.keras.layers.Dense(1024, activation='relu'),
-                            tf.keras.layers.Dropout(1.3),
-                            tf.keras.layers.Dense(10)
-                            ])
+"""
+model = tf.keras.Sequential(
+    [
+        # data_augmentation,
+        tf.keras.layers.InputLayer(input_shape=(32, 32, 3)),
+        tf.keras.layers.Conv2D(128, 2, padding="same", activation="relu"),
+        tf.keras.layers.Conv2D(64, 2, padding="same", activation="relu"),
+        tf.keras.layers.Conv2D(32, 2, padding="same", activation="relu"),
+        tf.keras.layers.Dropout(0.2),
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(1024, activation="relu"),
+        tf.keras.layers.Dropout(0.3),
+        tf.keras.layers.Dense(10),
+    ]
+)
 
 
 probability_model = tf.keras.Sequential([model, tf.keras.layers.Softmax()])
@@ -70,6 +73,7 @@ def train_step(input_x, input_y):
     optimizer.apply_gradients(zip(grads, model.trainable_weights))
 
     return loss_val  # if you need
+
 
 # With @tf.function End
 
@@ -101,4 +105,6 @@ for x_test, y_test in test_dataset:
 mean_loss = np.mean(mean_loss)
 mean_accuracy = np.mean(mean_accuracy)
 
-print(f"Test Samples (in batches) -> Total Loss: {mean_loss:.3f}, Accuracy: {mean_accuracy:.3f}")
+print(
+    f"Test Samples (in batches) -> Total Loss: {mean_loss:.3f}, Accuracy: {mean_accuracy:.3f}"
+)
