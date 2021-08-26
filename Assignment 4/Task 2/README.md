@@ -2,6 +2,11 @@
 
 Dataset: Cifar100
 
+<img src="images/DenseNet.png" width = "500" >
+
+<!-- <img src="images/model_architecture.png" width = "500" > -->
+
+
 
 
 
