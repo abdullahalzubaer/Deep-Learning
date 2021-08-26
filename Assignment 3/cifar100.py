@@ -50,7 +50,7 @@ model = tf.keras.Sequential([
                             tf.keras.layers.Dropout(0.2),
                             tf.keras.layers.Flatten(),
                             tf.keras.layers.Dense(1024, activation='relu'),
-                            tf.keras.layers.Dropout(1.3),
+                            tf.keras.layers.Dropout(0.3),
                             tf.keras.layers.Dense(100)
                             ])
 
