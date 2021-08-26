@@ -16,6 +16,7 @@ Dataset: Cifar100
 * [ ] Rerun with cifar100 and present the accuracy and loss for train, validation and test
 * [ ] Implement DenseNet-169, DenseNet-201 and DenseNet-264 (report the evaluation respectively)
 * [ ] Report the difference in performance between DenseNet and my previous vanilla CNN implemention w.r.t cifar100.
+* [ ] Implement with @tf.function to speed things up (both training and testing)
 ---
 
 
