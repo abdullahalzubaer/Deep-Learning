@@ -7,8 +7,38 @@ Dataset: Cifar100
 <!-- <img src="images/model_architecture.png" width = "500" > -->
 
 
+Model Evaluation:
+---
 
 
+     
+Platform: Colaboratory using GPU.
+
+
+    Total parameters: 7,145,892
+    Trainable parameters: 7,064,420
+    Non-trainable parameters: 81,472
+   
+
+    Epoch = 10
+    Training accuracy: 0.7513
+    Training loss    : 0.8085 
+    
+    Test accuracy    : 0.4152
+    Test loss        : 2.8083
+    
+    Discussion: Clearly overfitting the training data
+
+    
+    Epoch = 18 (with early stopping, monitoring accuracy)
+    Training accuracy: 0.9171
+    Training loss    : 0.2588 
+    
+    Test accuracy    : 0.3235
+    Test loss        : 5.5440
+    
+    Discussion: Clearly overfitting the training data
+    
 
 
 ###  TODO
