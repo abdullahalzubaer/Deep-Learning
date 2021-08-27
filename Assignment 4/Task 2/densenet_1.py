@@ -125,6 +125,9 @@ model.fit(
     callbacks=[callbacks,tensorboard_callback],
 )
 
+%load_ext tensorboard
+%tensorboard --logdir logs/fit
+
 '''
 
 
