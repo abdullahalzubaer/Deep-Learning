@@ -1,3 +1,4 @@
+import numpy as np
 import tensorflow as tf
 from keras.models import Model
 from tensorflow.keras.layers import (
@@ -18,6 +19,8 @@ cifar100 = tf.keras.datasets.cifar100
 (train_images, train_labels), (test_images, test_labels) = cifar100.load_data()
 train_images = train_images / 255.0
 test_images = test_images / 255.0
+train_labels = train_labels.astype(np.int32)
+test_labels = test_labels.astype(np.int32)
 
 # Composite Function
 # x = tensor
@@ -87,20 +90,21 @@ output = Dense(100, activation="softmax")(x)
 model = Model(input, output)
 
 
-model.compile(
-    optimizer="adam", loss=SparseCategoricalCrossentropy(), metrics=["accuracy"],
-)
+optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
+model.compile(
+    optimizer=optimizer, loss=SparseCategoricalCrossentropy(), metrics=["accuracy"],
+)
 
 model.fit(
     train_images,
     train_labels,
-    epochs=1,
-    validation_split=0.2,
-    batch_size=32,
-    shuffle=True,
+    epochs=10,
+    batch_size=128,
 )
+
 
 # Evaluating on the test data
 results = model.evaluate(test_images, test_labels, batch_size=128)
 print(f"Test loss: {results[0]}, Test accuracy: {results[1]}")
+
