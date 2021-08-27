@@ -1,3 +1,4 @@
+import datetime
 import numpy as np
 import tensorflow as tf
 from keras.models import Model
@@ -96,6 +97,39 @@ model.compile(
     optimizer=optimizer, loss=SparseCategoricalCrossentropy(), metrics=["accuracy"],
 )
 
+
+'''
+To use callbacks in colab - earlystopping and tensorboard
+!rm -rf ./logs/
+
+callbacks = [
+    tf.keras.callbacks.EarlyStopping(
+        # Stop training when `val_loss` is no longer improving
+        monitor="accuracy",
+        # "no longer improving" being defined as "no better than 1e-2 less"
+        min_delta=1e-2,
+        # "no longer improving" being further defined as "for at least 2 epochs"
+        patience=2,
+        verbose=1,
+    )
+]
+
+log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+model.fit(
+    train_images,
+    train_labels,
+    epochs=50,
+    batch_size=128,
+    callbacks=[callbacks,tensorboard_callback],
+)
+
+'''
+
+
+
+
 model.fit(
     train_images,
     train_labels,
@@ -112,8 +146,10 @@ print(f"Test loss: {results[0]}, Test accuracy: {results[1]}")
 '''
 Model Evaluation:
      
-    Platform: Colaboratory using GPU.
+Platform: Colaboratory using GPU.
 
+
+-----------------------------------------------
     Epoch = 10
 
     Training accuracy: 0.7513
@@ -121,4 +157,19 @@ Model Evaluation:
     
     Test accuracy    : 0.4152
     Test loss        : 2.8083
+    
+    Discussion: Clearly overfitting the training data
+----------------------------------------------
+    
+    Epoch = 18 (with early stopping, monitoring accuracy)
+
+    Training accuracy: 0.9171
+    Training loss    : 0.2588 
+    
+    Test accuracy    : 0.3235
+    Test loss        : 5.5440
+    
+    Discussion: Clearly overfitting the training data
+    
+   
 '''
