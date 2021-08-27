@@ -108,3 +108,17 @@ model.fit(
 results = model.evaluate(test_images, test_labels, batch_size=128)
 print(f"Test loss: {results[0]}, Test accuracy: {results[1]}")
 
+
+'''
+Model Evaluation:
+     
+    Platform: Colaboratory using GPU.
+
+    Epoch = 10
+
+    Training accuracy: 0.7513
+    Training loss    : 0.8085 
+    
+    Test accuracy    : 0.4152
+    Test loss        : 2.8083
+'''
