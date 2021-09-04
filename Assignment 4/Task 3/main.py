@@ -15,10 +15,8 @@ model = Sequential(
         Conv2D(128, 2, padding="same", activation="relu"),
         Conv2D(64, 2, padding="same", activation="relu"),
         Conv2D(32, 2, padding="same", activation="relu"),
-        Dropout(0.2),
         Flatten(),
         Dense(1024, activation="relu"),
-        Dropout(0.3),
         Dense(10),
     ]
 )
