@@ -1,1 +1,3 @@
- # High-level Training Loops with Keras
+ # High-level Training Loops with Keras (CNN)
+ 
+ Classification cifar10 
