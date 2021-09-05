@@ -26,13 +26,13 @@ class Net(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.conv1 = nn.Conv2d(in_channels=3, out_channels=128, kernel_size=2)
-        self.conv2 = nn.Conv2d(in_channels=128, out_channels=64, kernel_size=2)
-        self.conv3 = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=2)
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=128, kernel_size=2, padding='same')
+        self.conv2 = nn.Conv2d(in_channels=128, out_channels=64, kernel_size=2, padding='same')
+        self.conv3 = nn.Conv2d(in_channels=64, out_channels=32, kernel_size=2, padding='same')
 
         self.fc1 = nn.Linear(
-            in_features=32768, out_features=1024
-        )  # in_features = got it from forward method.
+            in_features=32*32*32, out_features=1024
+        )  # in_features = out_channels * img_height * img_width (since same padding, img shape remain same)
         self.fc2 = nn.Linear(in_features=1024, out_features=10)
 
     def forward(self, x):
