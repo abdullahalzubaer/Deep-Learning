@@ -1,4 +1,4 @@
-# Everything together.
+# Executed this file in colab.
 
 from datetime import datetime
 
