@@ -37,5 +37,7 @@ CNN built with certain keras functionality trained on MNIST, CIFAR10, CIFAR100 b
 
 1. CNN for classification  using tf.function decorator to speed up process for training and test phase.
 2. DenseNet implementation from scratch
+3. High-level Training Loops with Keras (CNN)
+4. TensorBoard Computation Graphs
 
 
