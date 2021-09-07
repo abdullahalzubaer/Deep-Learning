@@ -1,12 +1,17 @@
 # Deep Learning
 
-This repository is used for the assignments' solution in Introduction to Deep Learning course offered at OVGU in Summer 2020.
+## This repository is used for the assignments' solution of "Introduction to Deep Learning" course offered at Otto-von-Guericke-Universität Magdeburg, Germany.
+
+---
+
 
 Short description of each task
 
 Details are available inside each Assignment folder
 
-Implemented in Tensorflow 2.0.
+Implemented in Tensorflow 2.0 and Python 3.
+
+---
 
 ## Assignment 1
 ---
