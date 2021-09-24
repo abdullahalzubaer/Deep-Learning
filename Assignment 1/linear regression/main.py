@@ -41,7 +41,7 @@ noise = tf.random.normal(shape=[NUM_EXAMPLES])
 outputs = inputs*TRUE_W + TRUE_b + noise
 
 
-# Let'st rain the model for certain epochs and output the loss
+# Let'st train the model for certain epochs and output the loss
 """
 What we are doing here is we are keeping track of the weight bias and the loss in a list
 and then we are appending the new weight, bias and the loss in the list and
